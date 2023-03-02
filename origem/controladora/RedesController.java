@@ -31,33 +31,29 @@ public class RedesController {
 	        }
 	      } catch (IOException e) {
 	        e.printStackTrace();
-	      }
-	    } else if (osName.startsWith("Linux")) {
-	      command = "ifconfig";
-	      try {
-	        Process process = Runtime.getRuntime().exec(command);
-	        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-	        String line = reader.readLine();
-	        while (line != null) {
-	          String nextLine = reader.readLine();
-	          if (line.contains("enp4s0")) {
-	            System.out.println(line);
-	            if (nextLine != null) {
-	              System.out.println(nextLine);
-	            }
-	          }
-	          line = nextLine;
-	        }
-	      } catch (IOException e) {
-	        e.printStackTrace();
-	      }
-	    } else
-
-	    {
-	      System.out.println("Sistema Operacional não suportado.");
-	      return;
-	    }
-	  }
+	      
+	    }  		 } if(os().contains("Linux")){
+				try {
+					Process proc = Runtime.getRuntime().exec("ifconfig");
+		    		InputStream fdados = proc.getInputStream();
+		    		InputStreamReader leitura = new InputStreamReader(fdados);
+		    		BufferedReader buffer = new BufferedReader(leitura);
+		    		String linha = buffer.readLine();
+		    		while(linha != null) {
+		    			if(linha.contains("flags")) {
+		    		System.out.println(linha);}
+		    			if(linha.contains("IPv4")) {
+		    				System.out.println(linha);}
+		    		linha = buffer.readLine();
+		    		}
+		    		buffer.close();
+		    		leitura.close();
+		    		fdados.close();
+		    	} catch(IOException e) {
+					e.printStackTrace();
+	}
+		 }
+	}
 
 	  public void ping( String process) {
 		  if(os().contains("Windows")){
