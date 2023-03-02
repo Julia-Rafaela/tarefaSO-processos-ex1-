@@ -28,14 +28,9 @@ public class main {
 			       default: JOptionPane.showMessageDialog(null,"Opção Inválida");
 	
 		 
-	
+
 		 
-		 //rController.callProcess(process);
-	
-		 
-	 //String param = "cmd.exe";
-	 //rController.killprocess(param);
-	}
+		}
 }
 	}
 }
