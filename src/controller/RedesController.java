@@ -60,9 +60,9 @@ public class RedesController {
 	  }
 
 	  public void ping( String process) {
-		 
+		  if(os().contains("Windows")){
 		  try{
-	    		Process proc = Runtime.getRuntime().exec(process);
+	    		Process proc = Runtime.getRuntime().exec("PING -4 -n 10 www.google.com.br");
 	    		InputStream fdados = proc.getInputStream();
 	    		InputStreamReader leitura = new InputStreamReader(fdados);
 	    		BufferedReader buffer = new BufferedReader(leitura);
@@ -77,6 +77,29 @@ public class RedesController {
 	    	} catch(IOException e) {
 				e.printStackTrace();
 	    	}
-	    
-}
+		  }else {
+				if(os().contains("Linux")){
+					try {
+						Process proc = Runtime.getRuntime().exec(" PING -4 -c 10 www.google.com.br");
+			    		InputStream fdados = proc.getInputStream();
+			    		InputStreamReader leitura = new InputStreamReader(fdados);
+			    		BufferedReader buffer = new BufferedReader(leitura);
+			    		String linha = buffer.readLine();
+			    		while(linha != null) {
+			    		System.out.println(linha);
+			    		linha = buffer.readLine();
+			    		}
+			    		buffer.close();
+			    		leitura.close();
+			    		fdados.close();
+			    	} catch(IOException e) {
+						e.printStackTrace();
 	}
+	    
+       }
+	           
+   }
+   }
+}
+
+
