@@ -79,8 +79,8 @@ public class RedesController {
 	    	}
 		  }else {
 				if(os().contains("Linux")){
-					try {
-						Process proc = Runtime.getRuntime().exec(" PING -4 -c 10 www.google.com.br");
+					try 
+						Process proc = Runtime.getRuntime().exec("ping -4 -c 10 www.google.com.br");
 			    		InputStream fdados = proc.getInputStream();
 			    		InputStreamReader leitura = new InputStreamReader(fdados);
 			    		BufferedReader buffer = new BufferedReader(leitura);
