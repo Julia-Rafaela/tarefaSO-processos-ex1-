@@ -19,9 +19,7 @@ public class main {
 			switch (opc) {
 			       case 1: rController.validarIp();
 			                break;
-			       case 2: 	 
-			    	   String process ="PING -4 -n 10 www.google.com.br" ;
-				         rController.ping(process);
+			       case 2: 	 rController.ping(null);
 			               break;
 			       case 9:  JOptionPane.showMessageDialog(null,"Programa finalizado");
 			                break;
